@@ -10,3 +10,5 @@
 
 # next.js
 /.next/
+
+/.circleci/config2.yml

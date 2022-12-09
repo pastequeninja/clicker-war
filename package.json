@@ -4,14 +4,18 @@
   "description": "Clicker made by 3 friends ❤️",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No test specified\"",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier *.json \"src/**/*.{js,jsx,ts,tsx}\" \".circleci/config.yml\"",
+    "prettier:check": "npm run prettier -- --check",
+    "prettier:write": "npm run prettier -- --write"
   },
   "dependencies": {
     "next": "^13.0.6",
     "phaser": "^3.55.2",
+    "prettier": "^2.8.1",
     "react": "latest",
     "react-dom": "latest"
   },

@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+  prettier: cfra/prettier@0.1.1
+
+workflows:
+  code-format:
+    jobs:
+      - node/test:
+          # This is the node version to use for the `cimg/node` tag
+          # Relevant tags can be found on the CircleCI Developer Hub
+          # https://circleci.com/developer/images/image/cimg/node
+          version: '16.10'
+          pkg-manager: npm
+      - prettier/test:
+          executor: node
+          steps:
+            - checkout
+            - restore_cache:
+                keys:
+                  - v4-packaging-dependencies-{{ checksum "package-lock.json" }}
+                  - v4-packaging-dependencies-
+            - run:
+                name: qc-prettier
+                command: npm run prettier:check
